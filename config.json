@@ -1,0 +1,9 @@
+{
+  "MailSettings": {
+    "ToAddress": "alexis.atchison@illnois.gov"
+  },
+  "ConnectionStrings": {
+    "TheJunctionContextConnectionWin": "Server=(localdb)\\MSSQLLocalDb;Database=TheJunction;Trusted_Connection=true;MultipleActiveResultSets=true;",
+    "TheJunctionContextConnectionOSX": "Server=tcp:ss.closgwywj1bi.us-east-2.rds.amazonaws.com,1433;Initial Catalog=TheJunction;Persist Security Info=False;User ID=sa;Password=a9965637;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  }
+}

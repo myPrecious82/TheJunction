@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Manager Dashboard";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Daily Operations</h2>
+        <div>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="DailySheet">Daily Shift Data</a>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="PumpPrices">Pump Prices</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Scheduling</h2>
+        <div>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="Schedule">Schedules</a><!--view/edit/create/publish/archive - 7 week rotating?-->
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="ShiftTradeRequest">Shift Trade Requests</a><!--employees should be notified of status changes-->
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="TimeOffRequest">Time-Off Requests</a><!--employees should be notified of status changes-->
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Timekeeping & Payroll</h2>
+        <div>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="Timesheets">Timesheets</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Reports</h2>
+        <div>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="ReportTotalsDaily">Daily Totals</a>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="ReportTotalsMonthly">Monthly Totals</a>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="ReportFuel">Fuel</a>
+			<a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="ReportLottery">Lottery</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Food Specials</h2>
+        <div>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="FoodMenu">Menu</a>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="FoodRecipes">Recipes</a>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="FoodInstructions">Instructions</a>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="FoodLabels">Labels</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Miscellaneous</h2>
+        <div>
+            <a class="list-group-item disabled" href="#">Cameras</a>
+            <a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="Inventory">Inventory</a>
+			<a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="OtherPOSReports">Other POS Reports</a>
+            <a class="list-group-item list-group-item-warning" asp-area="" asp-controller="Manager" asp-action="Employee">Employees</a>
+			<a class="list-group-item" asp-area="" asp-controller="Manager" asp-action="EmployeeHandbook">Employee Handbook</a>
+        </div>
+    </div>
+</div>

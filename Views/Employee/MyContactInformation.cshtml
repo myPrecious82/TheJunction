@@ -1,0 +1,94 @@
+﻿@model TheJunction.ViewModels.EmployeeViewModel
+@{
+
+    ViewBag.Title = "Contact Information";
+}
+
+<!--
+    
+    x form creation
+    x link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input type="text" asp-for="FirstName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input type="text" asp-for="LastName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Address1"></label>
+            <input type="text" asp-for="Address1" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Address2"></label>
+            <input type="text" asp-for="Address2" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="City"></label>
+            <input type="text" asp-for="City" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="State"></label>
+            <input type="text" asp-for="State" class="form-control" value="IL" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Zip"></label>
+            <input type="text" asp-for="Zip" class="form-control" value="IL" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="CellNumber"></label>
+            <input type="text" asp-for="CellNumber" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="CellCarrierId"></label>
+            <select asp-for="CellCarrierId" class="form-control"></select>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" align="center">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <button class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            Created: @Model.Created
+        </div>
+    </div>
+    <div class="col-md-3" align="center">
+        <div class="form-group">
+            Created By: @Model.CreatedBy
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified: @Model.Modified
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified By: @Model.ModifiedBy
+        </div>
+    </div>
+</div>

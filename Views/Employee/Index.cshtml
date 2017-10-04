@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+<div class="row">
+    <div class="col-md-4">
+        <h2>Scheduling</h2>
+        <div class="list-group">
+            <a class="list-group-item list-group-item-warning" asp-area="" asp-controller="Employee" asp-action="FullSchedule">View Full Schedule</a>
+            <a class="list-group-item list-group-item-warning" asp-area="" asp-controller="Employee" asp-action="MySchedule">View My Schedule</a>
+            <a class="list-group-item list-group-item-warning" asp-area="" asp-controller="Employee" asp-action="MyTimeOffRequests">Time Off Requests</a>
+            <a class="list-group-item list-group-item-warning" asp-area="" asp-controller="Employee" asp-action="MyShiftTradeRequests">Shift Trade Requests</a>
+        </div>
+    </div>
+	<div class="col-md-4">
+        <h2>Timekeeping & Payroll</h2>
+	    <div>
+            <a class="list-group-item" asp-area="" asp-controller="Employee" asp-action="MyTimesheet">My Timesheet</a>
+		</div>
+	</div>
+    <div class="col-md-4">
+        <h2>Miscellaneous</h2>
+        <div>
+            <a class="list-group-item list-group-item-warning" asp-area="" asp-controller="Employee" asp-action="MyContactInformation">Contact Information</a>
+            <a class="list-group-item list-group-item-warning" asp-area="" asp-controller="Employee" asp-action="EmployeeHandbook">Employee Handbook</a>
+        </div>
+    </div>
+</div>

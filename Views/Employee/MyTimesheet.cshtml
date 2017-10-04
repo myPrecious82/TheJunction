@@ -1,0 +1,70 @@
+﻿@model TheJunction.ViewModels.TimeSheetViewModel
+@{
+
+    ViewBag.Title = "My Timesheet";
+}
+
+<!--
+    
+    form creation
+    link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-3">
+        <label>@DateTime.Now.ToString("M/dd/yyyy")</label>
+    </div>
+    <div class="col-md-3">
+        <label asp-for="StartTimestamp"></label>
+        @Html.EditorFor(model => model.StartTimestamp, "TimesSheetViewModel", "StartTimestamp", new { htmlAttributes = new { @class = "form-control", type="time" } })
+    </div>
+    <div class="col-md-3">
+        <label asp-for="EndTimestamp"></label>
+        @Html.EditorFor(model => model.EndTimestamp, "TimesSheetViewModel", "EndTimestamp", new { htmlAttributes = new { @class = "form-control", type = "time" } })
+    </div>
+    <div class="col-md-1">
+        <label asp-for="IsOnCall"></label>
+        @Html.CheckBoxFor(model => model.IsOnCall, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="col-md-1">
+        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("DeleteShift", "Manager")'">
+            @*<span class="fa fa-trash"></span>*@ Clock In
+        </button>
+    </div>
+    <div class="col-md-1">
+        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("DeleteShift", "Manager")'">
+            @*<span class="fa fa-trash"></span>*@ Clock Out
+        </button>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            Created: @Model.Created
+        </div>
+    </div>
+    <div class="col-md-3" align="center">
+        <div class="form-group">
+            Created By: @Model.CreatedBy
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified: @Model.Modified
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified By: @Model.ModifiedBy
+        </div>
+    </div>
+</div>

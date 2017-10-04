@@ -1,0 +1,52 @@
+﻿@model TheJunction.ViewModels.TimeOffRequestViewModel
+@{
+
+    ViewBag.Title = "My Time Off Requests";
+}
+
+<!--
+
+    x form creation
+    link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>@ViewBag.Title</h2>
+<div class="col-md-12" align="right">
+    <div class="form-group">
+        <a asp-controller="Employee" asp-action="TimeOffRequestForm" class="btn btn-primary">New Time Off Request</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Requested Date</th>
+            <th>Time Needed</th>
+            <th>Explanation</th>
+            <th>Approved/Denied</th>
+            <th>Reviewed Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>July 26, 2017</td>
+            <td>AM</td>
+            <td>i need to eat bacon</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>August 21, 2017</td>
+            <td>All Day</td>
+            <td>solar eclipse</td>
+            <td>Approved</td>
+            <td>7/25/2017 9:51 am</td>
+        </tr>
+    </tbody>
+</table>

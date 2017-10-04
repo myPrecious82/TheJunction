@@ -1,0 +1,82 @@
+﻿@model TheJunction.ViewModels.ScheduleViewModel
+@{
+
+    ViewBag.Title = "Full Schedule";
+}
+
+<!--
+
+    form creation
+    link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>Full Schedule</h2>
+@foreach (TheJunction.ViewModels.ShiftViewModel shiftDay in Model.Shifts.Where(x => x.ScheduleId == Model.Id).GroupBy(x => x.Day).Select(x => x.First()).OrderBy(x => x.Day).OrderBy(x => x.StartTime))
+{
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label class="panel-title">
+                    <a data-toggle="collapse" href="#@shiftDay.Day.ToString("MMdd")">@shiftDay.Day.DayOfWeek, @shiftDay.Day.ToString("MM/dd")</a>
+                </label>
+            </div>
+            <div id="@shiftDay.Day.ToString("MMdd")" class="panel-collapse">
+                @foreach (TheJunction.ViewModels.ShiftViewModel shift in Model.Shifts.Where(x => x.Day == shiftDay.Day))
+                {
+                    <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @if (!shift.StartTime.Equals(shift.EndTime))
+                                {
+                                    <label>@shift.StartTime.ToString("h:mm tt") - @shift.EndTime.ToString("h:mm tt")</label>}
+                                else
+                                {
+                                    <label>ON CALL</label>
+
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @shift.EmployeeName
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            Created: @Model.Created
+        </div>
+    </div>
+    <div class="col-md-3" align="center">
+        <div class="form-group">
+            Created By: @Model.CreatedBy
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified: @Model.Modified
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified By: @Model.ModifiedBy
+        </div>
+    </div>
+</div>

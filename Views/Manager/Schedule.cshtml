@@ -1,0 +1,31 @@
+﻿@model List<TheJunction.ViewModels.ScheduleViewModel>
+@{
+
+    ViewBag.Title = "Schedules";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="col-md-12" align="right">
+    <div class="form-group">
+        <a asp-controller="Manager" asp-action="ScheduleDetail" asp-route-id="0" class="btn btn-primary">New Schedule</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TheJunction.ViewModels.ScheduleViewModel sched in Model)
+        {
+            <tr>
+                <td>@sched.StartDate.ToString("M/dd/yyyy")</td>
+                <td>@sched.EndDate.ToString("M/dd/yyyy")</td>
+                <td><a asp-controller="Manager" asp-action="ScheduleDetail" asp-route-id="@sched.Id" class="btn btn-primary">View Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

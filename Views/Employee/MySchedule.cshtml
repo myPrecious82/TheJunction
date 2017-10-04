@@ -1,0 +1,65 @@
+﻿@model TheJunction.ViewModels.ScheduleViewModel
+@{
+
+    ViewBag.Title = "My Schedule";
+}
+
+<!--
+
+    form creation
+    link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>@ViewBag.Title</h2>
+@foreach (TheJunction.ViewModels.ShiftViewModel shiftDay in Model.Shifts.Where(x => x.ScheduleId == Model.Id).GroupBy(x => x.Day).Select(x => x.First()).OrderBy(x => x.Day).OrderBy(x => x.StartTime))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <label>
+                @shiftDay.Day.DayOfWeek, @shiftDay.Day.ToString("MM/dd")
+            </label>
+        </div>
+
+        @foreach (TheJunction.ViewModels.ShiftViewModel shift in Model.Shifts.Where(x => x.Day == shiftDay.Day))
+        {
+            @if (!shift.StartTime.Equals(shift.EndTime))
+            {
+                <div class="col-md-3"><label>@shift.StartTime.ToString("h:mm tt") - @shift.EndTime.ToString("h:mm tt")</label></div>
+            }
+            else
+            {
+                <div class="col-md-3"><label>ON CALL</label></div>
+            }
+        }
+    </div>
+}
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            Created: @Model.Created
+        </div>
+    </div>
+    <div class="col-md-3" align="center">
+        <div class="form-group">
+            Created By: @Model.CreatedBy
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified: @Model.Modified
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified By: @Model.ModifiedBy
+        </div>
+    </div>
+</div>

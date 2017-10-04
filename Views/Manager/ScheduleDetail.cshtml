@@ -1,0 +1,157 @@
+﻿@model TheJunction.ViewModels.ScheduleViewModel
+@{
+
+    ViewBag.Title = "Schedule";
+    double EmployeeTotal = 0.0;
+}
+
+<!--
+
+    x form creation
+    x link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>@ViewBag.Title</h2>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label class="panel-title">
+                <a data-toggle="collapse" href="#totals">Total Hours - By Employee</a>
+            </label>
+        </div>
+        <div id="totals" class="panel-collapse">
+            <div class="row">
+                @foreach (SelectListItem employee in Model.EmployeeList)
+                {
+                    var total = 0.0;
+                    EmployeeTotal = 0.0;
+
+                    <div class="col-md-1">
+                        <div class="form-group" align="center">
+                            <label>@employee.Text</label><br />
+                            @foreach (TheJunction.ViewModels.ShiftViewModel s in Model.Shifts)
+                            {
+                                if (s.EmployeeId == Convert.ToInt16(employee.Value))
+                                {
+                                    total += s.EndTime.Subtract(s.StartTime).TotalHours;
+                                    EmployeeTotal = total;
+                                }
+                            }
+                            @EmployeeTotal
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@foreach (TheJunction.ViewModels.ShiftViewModel shiftDay in Model.Shifts.GroupBy(x => x.Day).Select(x => x.First()).OrderBy(x => x.Day).OrderBy(x => x.StartTime))
+            {
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label class="panel-title">
+                    <a data-toggle="collapse" href="#@shiftDay.Day.ToString("MMdd")">@shiftDay.Day.DayOfWeek, @shiftDay.Day.ToString("MM/dd")</a>
+                </label>
+            </div>
+            <div id="@shiftDay.Day.ToString("MMdd")" class="panel-collapse collapse">
+                <div class="row">
+                    <div class="col-md-12" align="right">
+                        <div class="form-group">
+                            <!-- TODO add new shift -->
+                            <a asp-controller="Manager" asp-action="CreateShift" asp-route-startDate="@Model.StartDate.Day" class="btn btn-primary">New Shift</a>
+                        </div>
+                    </div>
+                </div>
+                @foreach (TheJunction.ViewModels.ShiftViewModel shift in Model.Shifts.Where(x => x.Day.Equals(shiftDay.Day)))
+                {
+                    @using (Html.BeginForm("SaveShift", "Manager"))
+                    {
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                @Html.HiddenFor(model => model.Shifts.Where(x => x.ShiftId == shift.ShiftId).First().ShiftId, new { @class = "form-control" })
+                                @Html.HiddenFor(model => model.Shifts.Where(x => x.ShiftId == shift.ShiftId).First().ScheduleId, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            @if (!shift.IsOnCall)
+                            {
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.Shifts.Where(x => x.ShiftId == shift.ShiftId).First().StartTime, "ShiftViewModel", "StartTime", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.Shifts.Where(x => x.ShiftId == shift.ShiftId).First().EndTime, "ShiftViewModel", "EndTime", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Shifts.Where(x => x.ShiftId == shift.ShiftId).First().IsOnCall, "ON CALL")
+                                    </div>
+                                </div>
+                            }
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(@model => @model.Shifts.Where(x => x.ShiftId == shift.ShiftId).First().EmployeeId, @shift.EmployeeList, "- please select -", new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-1">
+                                @if (!shift.IsOnCall)
+                                {
+                                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("DeleteShift", "Manager")'">
+                                        <span class="fa fa-trash"></span> Delete
+                                    </button>
+                                }
+                                </div>
+                            <div class="col-md-1">
+                                <input type="submit" class="btn btn-default" value="Save" />
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" align="center">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <button class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            Created: @Model.Created
+        </div>
+    </div>
+    <div class="col-md-3" align="center">
+        <div class="form-group">
+            Created By: @Model.CreatedBy
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified: @Model.Modified
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified By: @Model.ModifiedBy
+        </div>
+    </div>
+</div>

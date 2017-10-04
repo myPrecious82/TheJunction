@@ -1,0 +1,96 @@
+﻿@model TheJunction.ViewModels.ShiftTradeRequestViewModel
+@{
+
+    ViewBag.Title = "Shift Trade Request";
+}
+
+<!--
+
+    x form creation
+    x link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label asp-for="Created"></label>
+            <input type="text" asp-for="Created" class="form-control" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Employee 1 (person wanting to trade)</h4>
+        <div class="form-group">
+            <label asp-for="Employee1ShiftId"></label>
+            <select asp-for="Employee1ShiftId" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Explanation"></label>
+            <input type="text" asp-for="Explanation" class="form-control" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Employee 2</h4>
+        <div class="form-group">
+            @* need to list out Employee Names & corresponding scheduled shifts *@
+            <label asp-for="Employee2ShiftId"></label>
+            <select asp-for="Employee2ShiftId" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="IsEmployee2Approved"></label>
+            <input type="text" asp-for="IsEmployee2Approved" class="form-control" />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" align="center">
+            <p>
+                Please give us at least <strong>48 hours notice</strong>. Trades will be approved based on a first come, first serve basis. 
+                We cannot guarantee that all requests will be granted. Thank you for your cooperation.
+                </p>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" align="center">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <button class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            Created: @Model.Created
+        </div>
+    </div>
+    <div class="col-md-3" align="center">
+        <div class="form-group">
+            Created By: @Model.CreatedBy
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified: @Model.Modified
+        </div>
+    </div>
+    <div class="col-md-3" align="right">
+        <div class="form-group">
+            Last Modified By: @Model.ModifiedBy
+        </div>
+    </div>
+</div>

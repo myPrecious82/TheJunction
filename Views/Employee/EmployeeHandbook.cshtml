@@ -1,0 +1,49 @@
+﻿@model TheJunction.ViewModels.EmployeeHandbookAcceptanceViewModel
+@{
+
+    ViewBag.Title = "Employee Handbook";
+}
+
+<!--
+    
+    x form creation
+    x link to model
+    validation
+    data annotations
+    get
+    post
+    put
+    delete
+
+-->
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-12">
+        <p align="justify">
+            Lorem ipsum dolor sit amet, arcu cubilia accumsan ultricies adipiscing quis quam, purus in in ut, ut lorem diam. Facilisis ac, potenti eu elementum. Consequat sodales at suspendisse duis, duis nulla magna erat neque. Ultricies sem posuere facilisis rhoncus vivamus. Wisi viverra odio nec, maecenas diam justo, laoreet vestibulum tincidunt. Penatibus dolor aenean a, elit convallis non in id. Ipsum ligula tristique faucibus. Mauris justo eu fames commodo rutrum congue.
+        </p>
+        <p align="justify">
+            Duis vestibulum, mi sollicitudin porttitor tellus duis arcu, consectetuer egestas sit, ac ipsa at, ut mus vehicula mauris ut risus sodales. Mauris ligula nisl felis sit eleifend, est tempus, risus mauris. Condimentum semper nec eleifend enim. Imperdiet suspendisse sed justo, at dolor euismod sollicitudin vitae sit. Cras sed, a lacinia ac vel elementum. At ultricies, donec suscipit ante nec, odio ac ut, nullam nisl, vitae vestibulum. Cursus dignissim mi platea, nec at viverra suscipit, pellentesque rutrum aliquam tellus purus rhoncus. Sapien tincidunt purus elementum lacus quisque, per euismod. Fames sed in porttitor sodales impedit sed, tellus cras sed, a mauris ipsum nisl bibendum commodo, nibh dis.
+        </p>
+        <p align="justify">
+            Dolorum aliquam nisl ultrices duis, quisque sit amet eu nascetur vivamus. In commodo interdum metus a eget et, id quis semper nunc nec massa, pellentesque quis porta maecenas nulla sed nec, mollis sed pretium ante semper dolor quis, eleifend wisi. A quisque nunc vivamus fringilla phasellus. Nullam vehicula lacus aenean, fermentum eros diam volutpat sed auctor at. Eu eleifend tristique. Ligula habitasse arcu ligula magnis urna quisque, aut ante nullam, maecenas elit, tincidunt vestibulum id dignissim amet justo. Justo mauris a odio turpis, porta vehicula venenatis molestie.
+        </p>
+        <p align="justify">
+            Enim blandit turpis nunc, porta a repellat facilisi erat, lacinia pede rutrum, nibh lorem non, ac ipsum tellus vel cubilia. Dignissim lorem varius nec, tortor justo excepturi commodo feugiat, aliquam neque laoreet malesuada porta, pharetra in qui vitae phasellus orci. Convallis pulvinar sit sociosqu et venenatis. Aliquam ac magna nunc leo vitae sit, congue ridiculus, tellus sit. Ac ac velit quam quis congue ut. Consectetuer nullam, tellus vestibulum porttitor ac vel, natoque metus in nec pellentesque.
+        </p>
+        <p align="justify">
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        Accepted <input type="checkbox" asp-for="IsAccepted" />
+    </div>
+    <div class="col-md-4" align="center">
+        Version: {insert version number here}
+    </div>
+    <div class="col-md-4" align="right">
+        Last Modified: @Model.Modified
+    </div>
+</div>
